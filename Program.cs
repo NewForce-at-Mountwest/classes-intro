@@ -1,25 +1,75 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace classes
 {
-    // Create a class to represent a sandwich 
+
     class Program
     {
         static void Main(string[] args)
         {
-            // Create a few new instances of sandwiches
 
-            // Create a new list called menu and add some sandwiches to it
+            // Lightning Exercise One
 
-            // Give your customer a method called eatSandwich(). The method should take in a parameter of a sandwich and should write to the console a sentence like "mmm, what a delicious sandwich!"
+            // 1.  Create a new dictionary to represent a sandwich. The dictionary should store the follow data:
+            //     - Bread type
+            //     - Price
+            //     - Number of calories
+            //     - A comma-seperated, stringified list of ingridients
+            // Dictionary<string, string> sandwich = new Dictionary<string, string>(){
+            //     {"breadType", "wheat"},
+            //     {"price", "7.99"}
+            // };
 
-            // Move your sandwich and customer classes into seperate files 
+            // sandwich.Add("numberOfCalories", "400");
+            // sandwich.Add("ingredientList", "Pickles, Turkey, Cheese");
 
-          // Talk about constructor methods 
+            Sandwich tuna = new Sandwich("Tuna", 6.99, 150);
+            tuna.breadType = "pumpernickel";
+            tuna.getTotalCalories(4);
 
-          // Talk about access modifiers 
-            
-            
+
+
+            tuna.IngredientList = new List<string>(){
+                "Tuna",
+                "Pickles",
+                "Lettuce",
+                "Cucumber"
+            };
+
+            Sandwich rueben = new Sandwich("Rueben", 9.99, 250);
+            rueben.breadType = "white";
+
+
+            List<Sandwich> sandwichList = new List<Sandwich>(){
+                tuna,
+                rueben
+            };
+
+            sandwichList.ForEach(sandwich => Console.WriteLine(sandwich.breadType));
+
+            Customer Tommy = new Customer("Tommy", "Spurlock", "tommy@t.com"){
+                RewardsPoints = 1000,
+                favoriteSandwich = rueben
+            };
+
+            Customer Josh = new Customer("Josh", "Havey", "josh@josh.com"){
+                RewardsPoints = 4000,
+                favoriteSandwich = tuna
+            };
+
+            Josh.eatSandwich(tuna);
+            Tommy.eatSandwich(tuna);
+
+            List<Customer> customerDataBase = new List<Customer>(){
+                Josh,
+                Tommy
+            };
+
+            Console.WriteLine(Josh.RewardsPoints);
+            Josh.addRewardsPoints(100);
+
+
         }
     }
 }
